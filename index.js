@@ -10,21 +10,18 @@ function getDogImage(num) {
     })
     .then(responseJson => {
       displayResults(responseJson);
-      console.log(responseJson);
+      // console.log(responseJson);
     })
     .catch(error => alert(`Something went wrong. Try again later. ${error.message}`));
 }
 
 function displayResults(responseJson) {
   // console.log(responseJson);
-  //replace the existing image with the new one
-
+  //replace the existing image with the new ones
   let images = '';
   responseJson.message.forEach((image) => {
     images += `<img src="${image}" class="results-img">`;
   }); 
-
-
 
   $('.results-img').replaceWith(
     images
