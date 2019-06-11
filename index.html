@@ -12,13 +12,17 @@
     <div class="container">
         <h1>Dog API: A Simple Example</h1>
 
-        <form>
+        <form id='many-dogs'>
           <input type="number" id="dog-number" min="1" max="50">
           <input type="submit" value="Get a dog pic!">
         </form>
+        <form id='single-breed'>
+          <input type="text" id="breed-name">
+          <input type="submit" value="Get a breed pic!">
+        </form>
         <section class="results hidden">
-          <h2>Look at this dog!</h2>
-          <img class="results-img" alt="placeholder">
+          <h2>Look at this dog/these dogs!</h2>
+          <div class="results-img"><img alt="placeholder"></div>
         </section>
 
     </div>

@@ -15,6 +15,19 @@ function getDogImage(num) {
     .catch(error => alert(`Something went wrong. Try again later. ${error.message}`));
 }
 
+function getSingleBreed(breedName) {
+  let requestUrl = `https://dog.ceo/api/breed/${breedName}/images/random/1`;
+  fetch(requestUrl)
+    .then(response => {
+      return response.json();
+    })
+    .then(responseJson => {
+      displayResults(responseJson);
+    })
+    .catch(error => alert('breed not on database'));
+}
+
+
 function displayResults(responseJson) {
   // console.log(responseJson);
   //replace the existing image with the new ones
@@ -23,7 +36,7 @@ function displayResults(responseJson) {
     images += `<img src="${image}" class="results-img">`;
   }); 
 
-  $('.results-img').replaceWith(
+  $('.results-img').html(
     images
   );
   //display the results section
@@ -31,12 +44,19 @@ function displayResults(responseJson) {
 }
 
 function watchForm() {
-  $('form').submit(event => {
+  $('#many-dogs').submit(event => {
     event.preventDefault();
     let dogNum = $('#dog-number').val() ? $('#dog-number').val() : '3';
     $('#dog-number').val('');
     // console.log(dogNum, typeof dogNum);
     getDogImage(dogNum);
+  });
+  $('#single-breed').submit(event => {
+    event.preventDefault();
+    let breedName = $('#breed-name').val();
+    $('#breed-name').val('');
+    // console.log(dogNum, typeof dogNum);
+    getSingleBreed(breedName);
   });
 }
 
