@@ -46,7 +46,7 @@ function displayResults(responseJson) {
 function watchForm() {
   $('#many-dogs').submit(event => {
     event.preventDefault();
-    let dogNum = $('#dog-number').val() ? $('#dog-number').val() : '3';
+    let dogNum = ($('#dog-number').val() > 0 && $('#dog-number').val() < 51) ? $('#dog-number').val() : '3';
     $('#dog-number').val('');
     // console.log(dogNum, typeof dogNum);
     getDogImage(dogNum);
